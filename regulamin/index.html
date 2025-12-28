@@ -87,6 +87,18 @@ p {
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
+/* Styl dla przycisku kopiowania adresu IP */
+.btn-copy-ip {
+    background-color: #555;
+    cursor: pointer;
+    margin-left: 10px;
+    font-size: 16px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+
 /* Ikony w przyciskach */
 .btn img, .btn-online-count img {
     width: 24px;
@@ -110,22 +122,28 @@ p {
 <body>
 
 <!-- Ikona serwera (Używa linku z Imgura) -->
-<img src="https://i.imgur.com/5C3pD42.png" alt="KickMC Server Icon" class="server-icon">
+<img src="i.imgur.com" alt="KickMC Server Icon" class="server-icon">
 
 <h1>Witamy na KickMC.eu</h1>
 <p>Serwer Minecraft – tryb GenCash</p>
 
-<!-- Licznik online w formie przycisku -->
-<a href="#" class="btn-online-count">
-    <span id="player-count">0</span> graczy online
-</a>
+<div>
+    <!-- Licznik online w formie przycisku -->
+    <a href="#" class="btn-online-count">
+        <span id="player-count">0</span> graczy online
+    </a>
+    
+    <!-- Pole tekstowe z adresem IP do skopiowania i przycisk -->
+    <input type="text" value="kickmc.eu" id="serverIP" style="display:none;">
+    <button onclick="copyIP()" class="btn-copy-ip">Kopiuj IP</button>
+</div>
 
 <!-- Przyciski (zaktualizowane linki i ikony z CDN) -->
 <div>
     <a href="www.kickmc.eu" class="btn btn-regulamin">
         📖 Regulamin
     </a>
-    <!-- Ikona Discorda z CDN, jak w oryginalnym kodzie -->
+    <!-- Ikona Discorda z CDN -->
     <a href="discord.gg" class="btn btn-discord">
         <img src="cdn.jsdelivr.net" alt="Discord">
         Discord
@@ -135,11 +153,22 @@ p {
     </a>
 </div>
 
-<!-- Skrypt licznika online (alternatywna metoda Fetch API z adresem IP) -->
+<!-- Skrypty -->
 <script>
-    /* Używamy adresu IP z portem dla API */
-    const serverIp = '144.76.91.169:25655';
-    const apiUrl = `api.mcsrvstat.us{serverIp}`;
+    /* Skrypt do kopiowania adresu IP */
+    function copyIP() {
+        const copyText = document.getElementById("serverIP");
+        copyText.style.display = 'block'; // Pokaż na chwilę input, aby go zaznaczyć
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); /* Dla urządzeń mobilnych */
+        navigator.clipboard.writeText(copyText.value);
+        copyText.style.display = 'none'; // Ukryj ponownie
+        alert("Skopiowano adres IP: " + copyText.value);
+    }
+
+    /* Skrypt licznika online (alternatywna metoda Fetch API z adresem IP) */
+    const serverIpWithPort = '144.76.91.169:25655';
+    const apiUrl = `api.mcsrvstat.us{serverIpWithPort}`;
     const countElement = document.getElementById('player-count');
 
     fetch(apiUrl)
@@ -149,7 +178,7 @@ p {
                 countElement.textContent = data.players.online;
             } else {
                 /* Jeśli API nie działa, prawdopodobnie musisz włączyć "enable-query=true" w server.properties */
-                countElement.textContent = 'Błąd/Offline';
+                countElement.textContent = 'Offline'; 
             }
         })
         .catch(error => {
@@ -165,4 +194,3 @@ p {
 
 </body>
 </html>
-
