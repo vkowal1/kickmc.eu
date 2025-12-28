@@ -1,30 +1,118 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <title>KickMC.eu</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #0f0f0f;
-            color: #ffffff;
-            text-align: center;
-            margin-top: 100px;
-        }
-        a {
-            color: #00bfff;
-            text-decoration: none;
-            font-size: 18px;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>KickMC.eu – Strona główna</title>
+<style>
+/* Tło Minecraft – powtarzający się obrazek */
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('https://i.imgur.com/0aJd0hK.png'); /* przykładowy obrazek kwadratów */
+    background-repeat: repeat;
+    background-size: 40px 40px;
+    color: #fff;
+    text-align: center;
+    padding: 40px;
+    margin: 0;
+}
+
+/* Nagłówki */
+h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px #000;
+}
+
+p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 2px #000;
+}
+
+/* Przyciski */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    margin: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 10px;
+    color: white;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0,0,0,0.4);
+}
+
+/* Kolory przycisków */
+.btn-regulamin {
+    background-color: #f39c12; /* złoty */
+}
+
+.btn-discord {
+    background-color: #7289da; /* Discord niebieski */
+}
+
+.btn-sklep {
+    background-color: #2ecc71; /* zielony */
+}
+
+/* Ikony w przyciskach */
+.btn img {
+    width: 24px;
+    height: 24px;
+}
+
+/* Licznik online */
+.online-count {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 20px;
+    background-color: rgba(0,0,0,0.6);
+    padding: 10px 20px;
+    border-radius: 8px;
+    display: inline-block;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px #000;
+}
+</style>
 </head>
 <body>
-    <h1>Witamy na KickMC.eu</h1>
-    <p>Strona główna serwera Minecraft – tryb GenCash</p>
-    <p><a href="regulamin.html">Przejdź do regulaminu</a></p>
-    <p><a href="https://dc.kickmc.eu">Dołącz do Discorda</a></p>
+
+<h1>Witamy na KickMC.eu</h1>
+<p>Serwer Minecraft – tryb GenCash</p>
+
+<!-- Licznik online -->
+<div class="online-count">Online: <span id="online-count">0</span> graczy</div>
+
+<!-- Przyciski -->
+<div>
+    <a href="https://kickmc.eu/regulamin" class="btn btn-regulamin">
+        📖 Regulamin
+    </a>
+    <a href="https://discord.gg/4TeAFhGH6P" class="btn btn-discord">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg" alt="Discord">
+        Discord
+    </a>
+    <a href="https://yshop.pl/shop/shop-kickmc" class="btn btn-sklep">
+        💵 Sklep serwerowy
+    </a>
+</div>
+
+<!-- Skrypt licznika online -->
+<script>
+let count = 198; // statyczny licznik, można później podpiąć API
+document.getElementById('online-count').innerText = count;
+</script>
+
+<!-- Copyright -->
+<p style="margin-top:50px; font-size:14px; color:#ccc;">
+© 2025 KickMC.eu – Wszelkie prawa zastrzeżone. Kopiowanie treści bez zgody zabronione.
+</p>
+
 </body>
 </html>
