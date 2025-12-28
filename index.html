@@ -18,6 +18,17 @@ body {
     padding-bottom: 80px; /* Dodatkowy padding, żeby treść nie wchodziła pod stopkę */
 }
 
+/* Ikona serwera w lewym górnym rogu */
+.server-icon {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 64px; /* Rozmiar ikony */
+    height: 64px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
 /* Nagłówki - usunięto cienie tekstu */
 h1 {
     font-size: 48px;
@@ -62,21 +73,24 @@ p {
     background-color: #2ecc71; /* zielony */
 }
 
+/* Nowy styl przycisku licznika online (zielony, jak na obrazku referencyjnym) */
+.btn-online-count {
+    background-color: #4CAF50; /* Czysty zielony */
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
 /* Ikony w przyciskach */
 .btn img {
     width: 24px;
     height: 24px;
-}
-
-/* Licznik online */
-.online-count {
-    font-family: "Courier New", Courier, monospace;
-    font-size: 20px;
-    background-color: rgba(0,0,0,0.1); /* Lżejsze tło dla licznika */
-    padding: 10px 20px;
-    border-radius: 8px;
-    display: inline-block;
-    margin-bottom: 20px;
 }
 
 /* Stopka copyright na dole strony */
@@ -95,28 +109,51 @@ p {
 </head>
 <body>
 
+<!-- Ikona serwera -->
+<img src="i.imgur.com" alt="KickMC Server Icon" class="server-icon">
+
 <h1>Witamy na KickMC.eu</h1>
 <p>Serwer Minecraft – tryb GenCash</p>
 
-<!-- Licznik online - atrybut data-playercounter-ip automatycznie pobierze liczbę graczy -->
-<div class="online-count">Online: <span data-playercounter-ip="kickmc.eu">0</span> graczy</div>
+<!-- Licznik online w formie przycisku -->
+<a href="#" class="btn-online-count">
+    <span id="player-count">0</span> graczy online
+</a>
 
 <!-- Przyciski -->
 <div>
-    <a href="https://kickmc.eu/regulamin" class="btn btn-regulamin">
+    <a href="www.kickmc.eu" class="btn btn-regulamin">
         📖 Regulamin
     </a>
-    <a href="https://discord.gg/twojdiscord" class="btn btn-discord">
-        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg" alt="Discord">
+    <a href="discord.gg" class="btn btn-discord">
+        <img src="cdn.jsdelivr.net" alt="Discord">
         Discord
     </a>
-    <a href="https://yshop.pl/shop/shop-kickmc" class="btn btn-sklep">
+    <a href="yshop.pl" class="btn btn-sklep">
         💵 Sklep serwerowy
     </a>
 </div>
 
-<!-- Skrypt licznika online -->
-<script src="cdn.jsdelivr.net"></script>
+<!-- Skrypt licznika online (alternatywna metoda Fetch API) -->
+<script>
+    const serverIp = 'kickmc.eu';
+    const apiUrl = `api.mcsrvstat.us{serverIp}`;
+    const countElement = document.getElementById('player-count');
+
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            if (data.online) {
+                countElement.textContent = data.players.online;
+            } else {
+                countElement.textContent = 'Offline'; // Wyświetl "Offline" jeśli serwer nie odpowiada
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching server status:', error);
+            countElement.textContent = 'Błąd';
+        });
+</script>
 
 <!-- Copyright (przeniesiony i ostylowany klasą footer) -->
 <div class="footer">
@@ -125,3 +162,4 @@ p {
 
 </body>
 </html>
+
