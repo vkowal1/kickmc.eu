@@ -120,23 +120,24 @@ p {
     <span id="player-count">0</span> graczy online
 </a>
 
-<!-- Przyciski -->
+<!-- Przyciski (zaktualizowane linki) -->
 <div>
-    <a href="www.kickmc.eu" class="btn btn-regulamin">
+    <a href="https://www.kickmc.eu/regulamin" class="btn btn-regulamin">
         📖 Regulamin
     </a>
-    <a href="discord.gg" class="btn btn-discord">
+    <a href="https://discord.gg/3dMgagrMQq" class="btn btn-discord">
         <img src="cdn.jsdelivr.net" alt="Discord">
         Discord
     </a>
-    <a href="yshop.pl" class="btn btn-sklep">
+    <a href="https://yshop.pl/shop/shop-kickmc" class="btn btn-sklep">
         💵 Sklep serwerowy
     </a>
 </div>
 
-<!-- Skrypt licznika online (alternatywna metoda Fetch API) -->
+<!-- Skrypt licznika online (alternatywna metoda Fetch API z adresem IP) -->
 <script>
-    const serverIp = 'kickmc.eu';
+    /* Używamy adresu IP z portem dla API */
+    const serverIp = '144.76.91.169:25655';
     const apiUrl = `api.mcsrvstat.us{serverIp}`;
     const countElement = document.getElementById('player-count');
 
@@ -162,4 +163,5 @@ p {
 
 </body>
 </html>
+
 
