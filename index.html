@@ -4,29 +4,29 @@
 <meta charset="UTF-8">
 <title>KickMC.eu – Strona główna</title>
 <style>
-/* Tło Minecraft – powtarzający się obrazek */
+/* Zmienione tło na białe z jasnym wzorem kwadratów */
 body {
     font-family: Arial, sans-serif;
-    background-image: url('https://i.imgur.com/0aJd0hK.png'); /* przykładowy obrazek kwadratów */
+    background-color: #FFFFFF; /* Białe tło */
+    background-image: url('i.imgur.com'); /* Przykładowy jasny obrazek kwadratów */
     background-repeat: repeat;
     background-size: 40px 40px;
-    color: #fff;
+    color: #000; /* Zmieniony kolor tekstu na czarny dla czytelności na białym tle */
     text-align: center;
     padding: 40px;
     margin: 0;
+    padding-bottom: 80px; /* Dodatkowy padding, żeby treść nie wchodziła pod stopkę */
 }
 
-/* Nagłówki */
+/* Nagłówki - usunięto cienie tekstu */
 h1 {
     font-size: 48px;
     margin-bottom: 10px;
-    text-shadow: 2px 2px 4px #000;
 }
 
 p {
     font-size: 18px;
     margin-bottom: 30px;
-    text-shadow: 1px 1px 2px #000;
 }
 
 /* Przyciski */
@@ -72,12 +72,24 @@ p {
 .online-count {
     font-family: "Courier New", Courier, monospace;
     font-size: 20px;
-    background-color: rgba(0,0,0,0.6);
+    background-color: rgba(0,0,0,0.1); /* Lżejsze tło dla licznika */
     padding: 10px 20px;
     border-radius: 8px;
     display: inline-block;
     margin-bottom: 20px;
-    text-shadow: 1px 1px 2px #000;
+}
+
+/* Stopka copyright na dole strony */
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    color: #666; /* Ciemniejszy kolor dla czytelności */
+    padding: 10px 0;
+    background-color: #fff; /* Opcjonalne tło dla stopki */
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.05);
 }
 </style>
 </head>
@@ -86,15 +98,15 @@ p {
 <h1>Witamy na KickMC.eu</h1>
 <p>Serwer Minecraft – tryb GenCash</p>
 
-<!-- Licznik online -->
-<div class="online-count">Online: <span id="online-count">0</span> graczy</div>
+<!-- Licznik online - atrybut data-playercounter-ip automatycznie pobierze liczbę graczy -->
+<div class="online-count">Online: <span data-playercounter-ip="kickmc.eu">0</span> graczy</div>
 
 <!-- Przyciski -->
 <div>
     <a href="https://kickmc.eu/regulamin" class="btn btn-regulamin">
         📖 Regulamin
     </a>
-    <a href="https://discord.gg/4TeAFhGH6P" class="btn btn-discord">
+    <a href="https://discord.gg/twojdiscord" class="btn btn-discord">
         <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg" alt="Discord">
         Discord
     </a>
@@ -104,15 +116,12 @@ p {
 </div>
 
 <!-- Skrypt licznika online -->
-<script>
-let count = 198; // statyczny licznik, można później podpiąć API
-document.getElementById('online-count').innerText = count;
-</script>
+<script src="cdn.jsdelivr.net"></script>
 
-<!-- Copyright -->
-<p style="margin-top:50px; font-size:14px; color:#ccc;">
-© 2025 KickMC.eu – Wszelkie prawa zastrzeżone. Kopiowanie treści bez zgody zabronione.
-</p>
+<!-- Copyright (przeniesiony i ostylowany klasą footer) -->
+<div class="footer">
+    © 2025 KickMC.eu – Wszelkie prawa zastrzeżone. Kopiowanie treści bez zgody zabronione.
+</div>
 
 </body>
 </html>
