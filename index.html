@@ -15,25 +15,44 @@
                 #000000 100%
             );
             min-height: 100vh;
-            text-align: center;
         }
 
         /* GÓRNY PASEK */
         .header {
-            background-color: rgba(0,0,0,0.7);
-            padding: 20px;
+            background-color: rgba(0,0,0,0.75);
+            padding: 15px 30px;
             border-bottom: 2px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
-        .header img {
-            height: 90px;
+        .header-left,
+        .header-right {
+            display: flex;
+            gap: 15px;
         }
 
-        /* KAFELKI */
+        .header a {
+            color: #7CFF9B;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .header a:hover {
+            text-decoration: underline;
+        }
+
+        .header-center img {
+            height: 80px;
+        }
+
+        /* KONTENER */
         .container {
             max-width: 900px;
             margin: 50px auto;
             padding: 20px;
+            text-align: center;
         }
 
         .box {
@@ -56,7 +75,7 @@
             line-height: 1.6;
         }
 
-        a.btn {
+        .btn {
             display: inline-block;
             margin-top: 15px;
             padding: 12px 24px;
@@ -68,14 +87,28 @@
             transition: 0.2s;
         }
 
-        a.btn:hover {
+        .btn:hover {
             background-color: #5fe080;
+        }
+
+        /* MEDIA */
+        .media-links a {
+            display: block;
+            margin: 8px 0;
+            color: #7CFF9B;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .media-links a:hover {
+            text-decoration: underline;
         }
 
         /* STOPKA */
         .footer {
             background-color: rgba(0,0,0,0.8);
             color: #ccc;
+            text-align: center;
             padding: 15px;
             font-size: 14px;
             border-top: 2px solid rgba(255,255,255,0.1);
@@ -84,10 +117,23 @@
 </head>
 <body>
 
+<!-- GÓRA STRONY -->
 <div class="header">
-    <img src="server-icon.png" alt="KickMC.eu">
+    <div class="header-left">
+        <a href="https://discord.gg/3dMgagrMQq">Discord</a>
+        <a href="/regulamin">Regulamin</a>
+    </div>
+
+    <div class="header-center">
+        <img src="server-icon.png" alt="KickMC.eu">
+    </div>
+
+    <div class="header-right">
+        <a href="https://yshop.pl/shop/shop-kickmc">Sklep</a>
+    </div>
 </div>
 
+<!-- ŚRODEK -->
 <div class="container">
 
     <div class="box">
@@ -113,8 +159,19 @@
         <a class="btn" href="/regulamin">Zobacz regulamin</a>
     </div>
 
+    <!-- NOWY KAFEL -->
+    <div class="box">
+        <h2>Nasze media</h2>
+        <div class="media-links">
+            <a href="#">TikTok – KickMC</a>
+            <a href="#">YouTube – KickMC</a>
+            <a href="https://discord.gg/3dMgagrMQq">Discord – KickMC</a>
+        </div>
+    </div>
+
 </div>
 
+<!-- DÓŁ -->
 <div class="footer">
     © 2025 KickMC.eu – wszystkie prawa zastrzeżone
 </div>
@@ -122,5 +179,4 @@
 </body>
 </html>
 
-</body>
 </html>
